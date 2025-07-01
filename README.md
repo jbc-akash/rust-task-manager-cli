@@ -1,6 +1,6 @@
 # ✅ Task Manager CLI (Rust)
 
-📋 A clean-architecture based command-line tool to manage your daily tasks — built with Rust, JSON storage, and love ❤️
+📋 A clean-architecture based command-line tool to manage your daily tasks — built with Rust, JSON storage
 
 ---
 
@@ -52,20 +52,17 @@ cargo run -- done 1
 Marks task number 1 as ✅ Done.
 ```
 
-Delete a Task
-bash
-Always show details
-
-Copy
+### Delete a Task
+```
 cargo run -- delete 2
 Deletes task number 2.
+```
 
-🧪 Run Tests
-bash
-Always show details
-
-Copy
+## 🧪 Run Tests
+```
 cargo test
+```
+
 ## 🧱 Project Structure
 
 ```
