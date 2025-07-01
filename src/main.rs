@@ -1,12 +1,12 @@
-mod adapter;
 mod domain;
 mod infrastructure;
 mod usecase;
+mod adapter;
 
-use adapter::cli::{CliArgs, TaskCommand};
-use clap::Parser;
 use infrastructure::storage::{load_tasks, save_tasks};
 use usecase::task_manager::*;
+use adapter::cli::{CliArgs, TaskCommand};
+use clap::Parser;
 
 fn main() {
     let args = CliArgs::parse();
@@ -23,20 +23,24 @@ fn main() {
             list_tasks(&tasks);
         }
 
-        TaskCommand::Done { index } => match mark_task_done(&mut tasks, index - 1) {
-            Ok(_) => {
-                save_tasks(&tasks).expect("Failed to save tasks");
-                println!("✅ Task marked as done!");
+        TaskCommand::Done { index } => {
+            match mark_task_done(&mut tasks, index - 1) {
+                Ok(_) => {
+                    save_tasks(&tasks).expect("Failed to save tasks");
+                    println!("✅ Task marked as done!");
+                }
+                Err(e) => println!("❌ {}", e),
             }
-            Err(e) => println!("❌ {}", e),
-        },
+        }
 
-        TaskCommand::Delete { index } => match delete_task(&mut tasks, index - 1) {
-            Ok(_) => {
-                save_tasks(&tasks).expect("Failed to save tasks");
-                println!("✅ Task deleted!");
+        TaskCommand::Delete { index } => {
+            match delete_task(&mut tasks, index - 1) {
+                Ok(_) => {
+                    save_tasks(&tasks).expect("Failed to save tasks");
+                    println!("✅ Task deleted!");
+                }
+                Err(e) => println!("❌ {}", e),
             }
-            Err(e) => println!("❌ {}", e),
-        },
+        }   
     }
 }
