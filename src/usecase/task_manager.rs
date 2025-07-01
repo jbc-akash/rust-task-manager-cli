@@ -39,7 +39,7 @@ pub fn list_tasks(tasks: &[Task]) {
          println!(
             "{} {}  {}  [{}]",
             index,
-            task.description.green(),
+            task.description.bold(),
             status,
             created_at.dimmed()
         );
