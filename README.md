@@ -38,7 +38,7 @@ cargo run -- add "Read the Rust book"
 ```
 cargo run -- list
 ```
-## Sample Output
+### Sample Output
 
 ```
 📝 Your Tasks:
@@ -49,14 +49,14 @@ cargo run -- list
 ### Mark Task as Done
 ```bash
 cargo run -- done 1
-Marks task number 1 as ✅ Done.
 ```
+Marks task number 1 as ✅ Done.
 
 ### Delete a Task
 ```
 cargo run -- delete 2
-Deletes task number 2.
 ```
+Deletes task number 2.
 
 ## 🧪 Run Tests
 ```
