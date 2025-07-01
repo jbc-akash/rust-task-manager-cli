@@ -1,6 +1,7 @@
 use crate::domain::task::{Task, TaskStatus};
-use chrono::Utc;
+use chrono::{Utc, Local};
 use uuid::Uuid;
+use colored::*;
 
 pub fn add_task(tasks: &mut Vec<Task>, description: String) {
     let task = Task {
@@ -15,22 +16,32 @@ pub fn add_task(tasks: &mut Vec<Task>, description: String) {
 
 pub fn list_tasks(tasks: &[Task]) {
     if tasks.is_empty() {
-        println!("No tasks available.");
+        println!("{}", "📭 No tasks found.".yellow());
         return;
     }
 
+    println!("{}", "📝 Your Tasks:".bold().underline());
+
     for (i, task) in tasks.iter().enumerate() {
+        let index = format!("{:>2}.", i+1).cyan();
+        
         let status = match task.status {
-            TaskStatus::Pending => "🕒",
-            TaskStatus::Done => "✅",
+            TaskStatus::Pending => "🕒 Pending".normal(),
+            TaskStatus::Done => "✅ Done".green(),
         };
 
-        println!(
-            "{}. {} [{}] - {}",
-            i + 1,
-            task.description,
+        let created_at = task
+            .created_at
+            .with_timezone(&Local)
+            .format("%Y-%m-%d %H:%M")
+            .to_string();
+
+         println!(
+            "{} {}  {}  [{}]",
+            index,
+            task.description.green(),
             status,
-            task.created_at.to_rfc3339()
+            created_at.dimmed()
         );
     }
 }

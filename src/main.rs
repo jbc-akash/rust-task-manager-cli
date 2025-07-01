@@ -7,6 +7,7 @@ use infrastructure::storage::{load_tasks, save_tasks};
 use usecase::task_manager::*;
 use adapter::cli::{CliArgs, TaskCommand};
 use clap::Parser;
+use colored::*;
 
 fn main() {
     let args = CliArgs::parse();
@@ -16,7 +17,7 @@ fn main() {
         TaskCommand::Add { description } => {
             add_task(&mut tasks, description);
             save_tasks(&tasks).expect("Failed to save tasks");
-            println!("✅ Task added!");
+            println!("{}", "✅ Task added!".green());
         }
 
         TaskCommand::List => {
@@ -27,9 +28,9 @@ fn main() {
             match mark_task_done(&mut tasks, index - 1) {
                 Ok(_) => {
                     save_tasks(&tasks).expect("Failed to save tasks");
-                    println!("✅ Task marked as done!");
+                    println!("{}", "✅ Task marked as done!".green());
                 }
-                Err(e) => println!("❌ {}", e),
+                Err(e) => println!("{}", format!("❌ {}", e).red()),
             }
         }
 
@@ -37,9 +38,9 @@ fn main() {
             match delete_task(&mut tasks, index - 1) {
                 Ok(_) => {
                     save_tasks(&tasks).expect("Failed to save tasks");
-                    println!("✅ Task deleted!");
+                    println!("{}", "❌ Task deleted!".red());
                 }
-                Err(e) => println!("❌ {}", e),
+                Err(e) => println!("{}", format!("❌ {}", e).red()),
             }
         }   
     }
