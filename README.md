@@ -87,32 +87,16 @@ src/
 
 ```
 
-🧠 Learnings (Optional Section)
+## 🧠 Learnings (Optional Section)
 This project demonstrates:
 
-Rust ownership, enums, structs, Result<T, E>
+- Rust ownership, enums, structs, Result<T, E>
 
-File I/O with serde_json
+- File I/O with serde_json
 
-CLI building with clap
+- CLI building with clap
 
-Colored terminal output with colored
+- Colored terminal output with colored
 
-Unit testing and clean architecture
+- Unit testing and clean architecture
 
-📦 Optional: Install Globally
-To install it on your system:
-
-bash
-Always show details
-
-Copy
-cargo install --path .
-Then you can use it globally:
-
-bash
-Always show details
-
-Copy
-task-manager add "Ship this app!"
-task-manager list
