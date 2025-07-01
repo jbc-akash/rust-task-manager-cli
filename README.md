@@ -66,11 +66,9 @@ Always show details
 
 Copy
 cargo test
-🧱 Project Structure
-pgsql
-Always show details
+## 🧱 Project Structure
 
-Copy
+```
 src/
 ├── adapter/           # CLI interface
 │   ├── cli.rs
@@ -86,6 +84,9 @@ src/
 │   └── mod.rs
 ├── main.rs            # Entry point
 └── lib.rs             # Exposes app as a library
+
+```
+
 🧠 Learnings (Optional Section)
 This project demonstrates:
 
