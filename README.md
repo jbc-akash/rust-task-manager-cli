@@ -38,13 +38,13 @@ cargo run -- add "Read the Rust book"
 ```
 cargo run -- list
 ```
+## Sample Output
 
-Sample Output:
-
-yaml
+```
 📝 Your Tasks:
  1. Read the Rust book       🕒 Pending  [2025-06-30 15:12]
  2. Watch RustConf 2025      ✅ Done     [2025-06-29 22:50]
+```
 
 ### Mark Task as Done
 ```bash
